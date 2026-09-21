@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Iqbro Halal Grocers — Histon Road, Cambridge</title>
+<meta name="description" content="Iqbro Halal Grocers at 184b Histon Rd, Cambridge CB4 3JP — halal meat, fresh produce and world groceries."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#1B5E20;--green-dark:#0F3D14;--green-soft:#E8F3E9;--gold:#C9A84C;--gold-dark:#8A6D1F;--red:#CC0000;--text:#1A2B1C;--muted:#4A5D4C;--bg:#FBFAF5}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:inherit}
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 6%;background:rgba(251,250,245,.94);backdrop-filter:blur(10px);border-bottom:2px solid var(--gold)}
+.brand{font-family:'Playfair Display',serif;font-weight:800;font-size:24px;text-decoration:none;letter-spacing:.3px}
+.brand .iq{color:var(--red)}.brand .bro{color:var(--green)}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dark);margin-left:8px}
+.nav-links{display:flex;gap:22px}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--muted)}
+.nav-links a:hover{color:var(--green)}
+.hero{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;text-align:center;padding:100px 6% 90px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:6px;background:var(--gold)}
+.tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:100px;padding:5px 16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(44px,8vw,92px);font-weight:800;line-height:1.05;margin-bottom:18px;background:#fff;display:inline-block;padding:6px 28px;border-radius:14px;border-bottom:5px solid var(--gold)}
+.hero h1 .iq{color:var(--red)}.hero h1 .bro{color:var(--green)}
+.hero h2{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(18px,3vw,28px);color:var(--gold);margin-bottom:16px}
+.hero p{max-width:600px;margin:0 auto 32px;font-size:17px;color:rgba(255,255,255,.88)}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;padding:14px 28px;border-radius:10px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--green-dark)}
+.btn-line{border:2px solid var(--gold);color:#fff;margin-left:10px}
+section{padding:80px 6%}
+.wrap{max-width:1080px;margin:0 auto}
+.label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:10px}
+h3.title{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,44px);color:var(--green);line-height:1.2;margin-bottom:14px}
+.lead{color:var(--muted);max-width:620px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:38px}
+.card{background:#fff;border:1px solid #E3E8DC;border-top:4px solid var(--gold);border-radius:14px;padding:26px 22px;box-shadow:0 2px 8px rgba(15,61,20,.06)}
+.card .ic{font-size:34px;margin-bottom:10px}
+.card h4{font-family:'Playfair Display',serif;font-size:20px;color:var(--green);margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted)}
+.about{background:var(--green-soft)}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.about p{margin-bottom:14px;color:var(--muted)}
+.badge-box{background:var(--green);color:#fff;border-radius:16px;padding:32px 28px;border:3px solid var(--gold);text-align:center}
+.badge-box .big{font-family:'Playfair Display',serif;font-size:44px;color:var(--gold);line-height:1}
+.badge-box p{color:rgba(255,255,255,.9);margin:8px 0 0}
+.hours-box{max-width:520px;margin-top:34px;background:#fff;border:1px solid #E3E8DC;border-radius:14px;overflow:hidden}
+.hours-box div{display:flex;justify-content:space-between;padding:13px 22px;border-bottom:1px solid #EEF1E8;font-size:15px}
+.hours-box div:last-child{border-bottom:none}
+.hours-box div span:first-child{font-weight:600;color:var(--green)}
+.contact{background:var(--green-dark);color:#fff}
+.contact .title{color:var(--gold)}.contact .lead{color:rgba(255,255,255,.8)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.4);border-radius:14px;padding:28px}
+.contact-card h4{font-family:'Playfair Display',serif;color:var(--gold);font-size:22px;margin-bottom:10px}
+.contact-card p{margin-bottom:8px;color:rgba(255,255,255,.9)}
+.contact-card a.btn{margin-top:10px}
+footer{background:#08290C;color:rgba(255,255,255,.65);text-align:center;padding:28px 6%;font-size:13px}
+footer .iq{color:#FF5555}footer .bro{color:#7BC67E}
+@media(max-width:760px){.nav-links{display:none}.about-grid,.contact-grid{grid-template-columns:1fr}.btn-line{margin:12px 0 0}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="brand"><span class="iq">Iq</span><span class="bro">bro</span><small>Halal Grocers</small></a>
+  <div class="nav-links">
+    <a href="#products">Products</a><a href="#about">About</a><a href="#hours">Hours</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="tag">Histon Road · Cambridge</div>
+  <h1><span class="iq">Iq</span><span class="bro">bro</span></h1>
+  <h2>Halal Grocers</h2>
+  <p>Fresh halal meat, quality fruit and vegetables and your favourite world groceries — all under one roof on Histon Road.</p>
+  <a href="#products" class="btn btn-gold">Browse Our Products</a>
+  <a href="#contact" class="btn btn-line">Visit Us</a>
+</header>
+
+<section id="products">
+  <div class="wrap">
+    <div class="label">What We Stock</div>
+    <h3 class="title">Everything for Your Kitchen</h3>
+    <p class="lead">From daily essentials to specialist ingredients — ask in store or chat with us if you're looking for something in particular.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🥩</div><h4>Halal Meat</h4><p>Quality halal cuts for everyday cooking and family occasions.</p></div>
+      <div class="card"><div class="ic">🥬</div><h4>Fresh Produce</h4><p>Fruit and vegetables, including favourites hard to find in the supermarkets.</p></div>
+      <div class="card"><div class="ic">🌶️</div><h4>Spices &amp; Seasonings</h4><p>Whole and ground spices, masalas and sauces to bring your dishes to life.</p></div>
+      <div class="card"><div class="ic">🍚</div><h4>Rice, Flour &amp; Pulses</h4><p>Basmati and other rice, atta, lentils and staples in family-sized bags.</p></div>
+      <div class="card"><div class="ic">🥛</div><h4>Dairy &amp; Chilled</h4><p>Milk, yoghurt, paneer, ghee and other chilled essentials.</p></div>
+      <div class="card"><div class="ic">🫖</div><h4>Drinks &amp; Snacks</h4><p>Teas, juices, sweets and snacks from around the world.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="label">About Us</div>
+      <h3 class="title">Your Neighbourhood Halal Grocer</h3>
+      <p>Iqbro Halal Grocers is a local grocery store on Histon Road in Cambridge, serving families, students and food lovers from across the community.</p>
+      <p>We're proud to offer halal products you can trust, fresh produce and the ingredients that make home cooking special — with friendly service every time you visit.</p>
+    </div>
+    <div class="badge-box">
+      <div class="big">100%</div>
+      <p><strong>Halal</strong> you can trust</p>
+      <p>Proudly serving Cambridge</p>
+    </div>
+  </div>
+</section>
+
+<section id="hours">
+  <div class="wrap">
+    <div class="label">Opening Hours</div>
+    <h3 class="title">When to Visit</h3>
+    <!-- TODO: confirm real opening hours with the shop before publishing -->
+    <div class="hours-box">
+      <div><span>Monday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Tuesday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Wednesday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Thursday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Friday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Saturday</span><span>8:00am – 10:00pm</span></div>
+      <div><span>Sunday</span><span>9:00am – 9:00pm</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label" style="color:var(--gold)">Contact</div>
+    <h3 class="title">Come and See Us</h3>
+    <p class="lead">Drop in, or tap the chat bubble at the bottom right to ask our assistant about products and opening times.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4>📍 Find Us</h4>
+        <p><strong>Iqbro Halal Grocers</strong><br/>184b Histon Rd<br/>Cambridge<br/>CB4 3JP</p>
+        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=184b+Histon+Rd+Cambridge+CB4+3JP">Get Directions →</a>
+      </div>
+      <div class="contact-card">
+        <h4>💬 Ask Us Anything</h4>
+        <p>Our chat assistant is online any time to help with product questions, stock and opening hours.</p>
+        <p>Click the chat bubble in the bottom right corner to start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="yr"></span> <span class="iq">Iq</span><span class="bro">bro</span> Halal Grocers · 184b Histon Rd, Cambridge CB4 3JP</div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  window.EbongestConfig = { agentId: "1790029670259", agentName: "Amara", businessName: "Iqbro Halal Grocers" };
+</script>
+<script src="https://ebongestsolutions.com/widget.js" async></script>
+</body>
+</html>
