@@ -72,6 +72,15 @@ footer .iq{color:#FF5555}footer .bro{color:#7BC67E}
 @media(max-width:960px){.pgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.nav-links{display:none}.about-grid,.contact-grid{grid-template-columns:1fr}.btn-line{margin:10px 0 0}section{padding:44px 6%}.pgrid{gap:12px}.pcard h4{font-size:15px;padding:10px 12px 12px}.slot .ph-ic{font-size:26px}}
 @media(max-width:380px){.pgrid{grid-template-columns:1fr}}
+.voice{position:fixed;right:96px;bottom:24px;z-index:9998;display:flex;align-items:center;gap:10px;flex-direction:row-reverse}
+.voice button{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);background:var(--green);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(15,61,20,.35);transition:transform .15s}
+.voice button:hover{transform:scale(1.06)}
+.voice button.live{background:var(--red);animation:pulse 1.4s infinite}
+.voice button.busy{opacity:.6;cursor:wait}
+.voice svg{width:26px;height:26px;fill:#fff}
+.voice-label{background:#fff;color:var(--green);border:1px solid var(--gold);border-radius:100px;padding:6px 12px;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.12);white-space:nowrap}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(204,0,0,.5)}70%{box-shadow:0 0 0 14px rgba(204,0,0,0)}100%{box-shadow:0 0 0 0 rgba(204,0,0,0)}}
+@media(max-width:480px){.voice{right:84px;bottom:20px}.voice-label{display:none}.voice button{width:52px;height:52px}}
 </style>
 </head>
 <body>
@@ -167,9 +176,38 @@ footer .iq{color:#FF5555}footer .bro{color:#7BC67E}
   <div>© <span id="yr"></span> <span class="iq">Iq</span><span class="bro">bro</span> Halal Grocers · 184b Histon Rd, Cambridge CB4 3JP</div>
 </footer>
 
+<div class="voice">
+  <button id="voiceBtn" type="button" aria-label="Talk to Amara by voice" title="Talk to Amara"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg></button>
+  <span class="voice-label" id="voiceLabel">Talk to Amara</span>
+</div>
+
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 <script>
   window.EbongestConfig = { agentId: "1790029670259", agentName: "Amara", businessName: "Iqbro Halal Grocers" };
+</script>
+<script type="module">
+  const btn = document.getElementById('voiceBtn'), label = document.getElementById('voiceLabel');
+  const idle = label.textContent;
+  let vapi = null, active = false;
+  const setState = (cls, text) => { btn.className = cls; label.textContent = text; };
+  btn.addEventListener('click', async () => {
+    const cfg = window.EbongestConfig || {};
+    if (active && vapi) { vapi.stop(); return; }
+    const key = cfg.vapiPublicKey || cfg.publicKey;
+    const assistant = cfg.vapiAssistantId || cfg.assistantId || cfg.agentId;
+    if (!key || !assistant) { label.textContent = 'Voice unavailable right now'; setTimeout(() => label.textContent = idle, 3000); return; }
+    setState('busy', 'Connecting…');
+    try {
+      if (!vapi) {
+        const { default: Vapi } = await import('https://esm.sh/@vapi-ai/web');
+        vapi = new Vapi(key);
+        vapi.on('call-start', () => { active = true; setState('live', 'Listening… tap to end'); });
+        vapi.on('call-end', () => { active = false; setState('', idle); });
+        vapi.on('error', () => { active = false; setState('', idle); });
+      }
+      await vapi.start(assistant);
+    } catch (e) { active = false; setState('', idle); console.error('Voice call failed', e); }
+  });
 </script>
 <script src="https://ebongestsolutions.com/widget.js" async></script>
 </body>
